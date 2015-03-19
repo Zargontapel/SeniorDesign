@@ -1,0 +1,10 @@
+NAME=console
+
+all:
+	gcc -Os -o $(NAME) opConsole.c UDPclient.c UDPclient.h -I. -lncurses
+
+server: udp-recv.c
+	gcc -o server udp-recv.c
+
+clean:
+	file * | grep executable | grep -v 'shell script' | cut -d: -f 1 | xargs rm
